@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "./type/date_yyyy_mm"
 require_relative "./type/timestamp"
 

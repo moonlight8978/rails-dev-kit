@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "dev_kit/version"
 require "dev_kit/railtie"
 

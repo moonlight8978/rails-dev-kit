@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module DevKit
   module Type
     class Timestamp < ActiveModel::Type::DateTime
@@ -18,4 +19,3 @@ module DevKit
     end
   end
 end
-

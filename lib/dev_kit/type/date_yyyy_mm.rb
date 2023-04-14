@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DevKit
   module Type
     class DateYyyyMm < ActiveModel::Type::Date
@@ -8,13 +10,13 @@ module DevKit
       def cast(value)
         return if value.blank?
 
-        Date.strptime(value, '%Y-%m') rescue nil
+        Date.strptime(value, "%Y-%m") rescue nil
       end
 
       def serialize(value)
         return if value.blank?
 
-        value.strftime('%Y-%m') rescue nil
+        value.strftime("%Y-%m") rescue nil
       end
     end
   end
