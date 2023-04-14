@@ -1,6 +1,11 @@
 require "dev_kit/version"
 require "dev_kit/railtie"
 
+require "dev_kit/controllers"
+require "dev_kit/form"
+require "dev_kit/service"
+require "dev_kit/time"
+require "dev_kit/type"
 require "dev_kit/core_ext"
 
 module DevKit
