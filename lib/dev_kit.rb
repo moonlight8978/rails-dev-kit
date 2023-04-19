@@ -2,6 +2,7 @@
 
 require "dev_kit/version"
 require "dev_kit/railtie"
+require "enumerize"
 
 require "dev_kit/controllers"
 require "dev_kit/form"

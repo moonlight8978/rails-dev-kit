@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency "rails", ">= 7.0.4.2"
+  spec.add_dependency "enumerize", "~> 2.6", ">= 2.6.1"
 end
