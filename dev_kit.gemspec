@@ -23,6 +23,14 @@ Gem::Specification.new do |spec|
     Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   end
 
+  spec.test_files = Dir.chdir(File.expand_path(__dir__)) do
+    Dir["spec/**/*"]
+  end
+
   spec.add_dependency "rails", ">= 7.0.4.2"
-  spec.add_dependency "enumerize", "~> 2.6", ">= 2.6.1"
+  spec.add_dependency "enumerize"
+  spec.add_development_dependency "rspec-rails"
+  spec.add_development_dependency "rspec-collection_matchers"
+  spec.add_development_dependency "sqlite3"
+  spec.add_development_dependency "debug"
 end

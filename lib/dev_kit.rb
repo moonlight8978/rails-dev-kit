@@ -3,8 +3,10 @@
 require "dev_kit/version"
 require "dev_kit/railtie"
 require "enumerize"
+require "csv"
 
 require "dev_kit/controllers"
+require "dev_kit/csv"
 require "dev_kit/form"
 require "dev_kit/service"
 require "dev_kit/time"
