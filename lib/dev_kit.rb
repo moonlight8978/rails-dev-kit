@@ -7,6 +7,7 @@ require "csv"
 
 require "dev_kit/controllers"
 require "dev_kit/csv"
+require "dev_kit/enum"
 require "dev_kit/form"
 require "dev_kit/service"
 require "dev_kit/time"
