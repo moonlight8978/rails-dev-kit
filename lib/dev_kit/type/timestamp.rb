@@ -8,7 +8,7 @@ module DevKit
       end
 
       def cast(value)
-        Time.zone.at(value.to_i) rescue nil
+        ::Time.zone.at(value.to_i) rescue nil
       end
 
       def serialize(value)
