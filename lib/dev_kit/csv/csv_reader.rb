@@ -6,7 +6,7 @@ module DevKit
           row_record = nil
           reader = new(type)
 
-          CSV.foreach(file, headers: true) do |row|
+          CSV.foreach(file, headers: true, skip_blanks: true) do |row|
             maybe_record = reader.update_or_new_record(row)
             # Yield previous record (when next record is read for the first row)
             yield row_record if maybe_record && row_record
