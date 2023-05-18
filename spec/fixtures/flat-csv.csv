@@ -1,4 +1,4 @@
-Id,Name
-1,Le Si Bich
-2,Luu Xuan Viet
-3,Hoang Thu Huong
+Id,Name,Group
+1,Le Si Bich,Gr1;   Gr2   ;Gr3
+2,Luu Xuan Viet,
+3,Hoang Thu Huong,Gr1

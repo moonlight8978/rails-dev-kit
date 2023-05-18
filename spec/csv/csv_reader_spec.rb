@@ -4,6 +4,7 @@ class MemberCsv
 
   column :id, header: "Id", converter: :integer
   column :name, header: "Name", converter: :string
+  column :groups, header: "Group", converter: :array_of_string
 end
 
 class MemberAttachmentCsv
@@ -45,12 +46,15 @@ RSpec.describe DevKit::Csv::CsvReader do
 
       expect(results[0].id).to eq(1)
       expect(results[0].name).to eq("Le Si Bich")
+      expect(results[0].groups).to eq(["Gr1", "Gr2", "Gr3"])
 
       expect(results[1].id).to eq(2)
       expect(results[1].name).to eq("Luu Xuan Viet")
+      expect(results[1].groups).to eq([])
 
       expect(results[2].id).to eq(3)
       expect(results[2].name).to eq("Hoang Thu Huong")
+      expect(results[2].groups).to eq(["Gr1"])
     end
   end
 
