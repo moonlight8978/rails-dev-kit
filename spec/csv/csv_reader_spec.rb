@@ -1,58 +1,61 @@
-class MemberCsv
-  include DevKit::Csv::CsvRowRecord
-  extend DevKit::Csv::CsvRowRecord
+class Member
+  include DevKit::ConfigMap::Record
+
+  config_reader file: "spec/fixtures/flat-csv.csv", key_by: :id
 
   column :id, header: "Id", converter: :integer
   column :name, header: "Name", converter: :string
   column :groups, header: "Group", converter: :array_of_string
 end
 
-class MemberAttachmentCsv
-  include DevKit::Csv::CsvRowRecord
-  extend DevKit::Csv::CsvRowRecord
+class MemberAttachment
+  include DevKit::ConfigMap::Record
+
+  config_reader key_by: :id
 
   column :id, header: "Attachment Id", converter: :integer
   column :name, header: "Attachment Name", converter: :string
 end
 
-class GroupMemberCsv
-  include DevKit::Csv::CsvRowRecord
-  extend DevKit::Csv::CsvRowRecord
+class GroupMember
+  include DevKit::ConfigMap::Record
+
+  config_reader key_by: :id
 
   column :id, header: "Member Id", converter: :integer
   column :name, header: "Member Name", converter: :string
-  column :attachments, sub_reader: MemberAttachmentCsv
+  column :attachments, sub_reader: MemberAttachment
 end
 
-class GroupCsv
-  include DevKit::Csv::CsvRowRecord
-  extend DevKit::Csv::CsvRowRecord
+class Group
+  include DevKit::ConfigMap::Record
+
+  config_reader file: "spec/fixtures/multi-level-csv.csv", key_by: :id
 
   column :id, header: "Group Id", converter: :integer
   column :name, header: "Group Name", converter: :string
-  column :members, sub_reader: GroupMemberCsv
+  column :members, sub_reader: GroupMember
 end
 
 RSpec.describe DevKit::Csv::CsvReader do
   context "flat csv" do
     it "reads csv correctly" do
-      results = []
-
-      described_class.foreach(file: "spec/fixtures/flat-csv.csv", type: MemberCsv) do |member|
-        results << member
-      end
+      results = Member.from_csv("spec/fixtures/flat-csv.csv")
 
       expect(results).to have(3).items
 
       expect(results[0].id).to eq(1)
+      expect(results[0]).to eq(results.fetch(1))
       expect(results[0].name).to eq("Le Si Bich")
       expect(results[0].groups).to eq(["Gr1", "Gr2", "Gr3"])
 
       expect(results[1].id).to eq(2)
+      expect(results[1]).to eq(results.fetch(2))
       expect(results[1].name).to eq("Luu Xuan Viet")
       expect(results[1].groups).to eq([])
 
       expect(results[2].id).to eq(3)
+      expect(results[2]).to eq(results.fetch(3))
       expect(results[2].name).to eq("Hoang Thu Huong")
       expect(results[2].groups).to eq(["Gr1"])
     end
@@ -60,11 +63,7 @@ RSpec.describe DevKit::Csv::CsvReader do
 
   context "multi-level csv" do
     it "reads csv correctly" do
-      results = []
-
-      described_class.foreach(file: "spec/fixtures/multi-level-csv.csv", type: GroupCsv) do |group|
-        results << group
-      end
+      results = Group.from_csv("spec/fixtures/multi-level-csv.csv")
 
       expect(results).to have(2).items
 

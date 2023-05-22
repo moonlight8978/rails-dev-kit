@@ -13,6 +13,7 @@ require "dev_kit/service"
 require "dev_kit/time"
 require "dev_kit/type"
 require "dev_kit/core_ext"
+require "dev_kit/config_map"
 
 module DevKit
   # Your code goes here...
