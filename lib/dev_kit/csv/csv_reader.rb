@@ -29,16 +29,17 @@ module DevKit
           return_result = @record
 
           @record.assign_attributes(
-            @type.attrs.map do |attr|
-              if @type.is_sub_reader?(attr)
-                [attr, []]
-              else
+            @type.attrs
+              .reject do |attr|
+                @type.is_sub_reader?(attr)
+              end
+              .map do |attr|
                 header = @type.attr_to_header[attr]
                 raise "Header #{header} is not defined in CSV file" unless row.key?(header)
 
                 [attr, row[header]]
               end
-            end.to_h
+              .to_h
           )
         else
           return_result = nil
