@@ -6,8 +6,9 @@ module DevKit
 
         def register(type, options = {})
           self.type_to_config_map ||= {}
-          type_to_config_map[type.name] = type.from_csv
-          type_to_config_map[options[:alias]] = type.from_csv if options[:alias]
+          config_map = type.from_csv
+          type_to_config_map[type.name] = config_map
+          type_to_config_map[options[:alias]] = config_map if options[:alias]
         end
 
         def lookup(type_or_alias)
