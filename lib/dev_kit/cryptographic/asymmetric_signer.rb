@@ -3,7 +3,7 @@ module DevKit
     class AsymmetricSigner
       attr_reader :public_key, :private_key, :algorithm
 
-      def initialize(pub:, priv:, alg: "RS256")
+      def initialize(pub: nil, priv: nil, alg: "RS256")
         @public_key = OpenSSL::PKey::RSA.new(pub) if pub.present?
         @private_key = OpenSSL::PKey::RSA.new(priv) if priv.present?
 

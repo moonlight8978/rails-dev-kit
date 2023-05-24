@@ -3,7 +3,7 @@ module DevKit
     class SymmetricSigner
       attr_reader :secret, :algorithm
 
-      def initialize(secret:, alg: 'HS256')
+      def initialize(secret: nil, alg: 'HS256')
         @secret = secret
         @algorithm = alg
       end
