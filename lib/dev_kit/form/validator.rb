@@ -9,6 +9,10 @@ module DevKit
 
       import_predicates_as_macros
 
+      register_macro(:eth_wallet_address_format) do
+        key.failure('is not a valid eth wallet address format') unless /\A0x[0-9|a-f|A-f]{40}\z/i.match?(value)
+      end
+
       def validate(**kwargs)
         self.current = call(**kwargs)
       end

@@ -3,6 +3,17 @@
 module DevKit
   module Service
     class JsonRenderEngine
+      class ResponseBody
+        include ActiveModel::Model
+        include ActiveModel::Attributes
+
+        alias :read_attribute_for_serialization :send
+
+        attribute :resource, default: nil
+        attribute :collection, default: nil
+        attribute :meta, default: {}
+      end
+
       def show(context, record, *args, **kwargs)
         context.render json: ResponseBody.new(resource: record, meta: context.meta), status: :ok, scope: context, scope_name: :ctl, **kwargs
       end
