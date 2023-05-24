@@ -24,7 +24,7 @@ class GroupMember
 
   column :id, header: "Member Id", converter: :integer
   column :name, header: "Member Name", converter: :string
-  column :attachments, sub_reader: MemberAttachment
+  column :attachments, sub_reader: MemberAttachment, default: proc { DevKit::ConfigMap::Collection.new([], record_type: self) }
 end
 
 class Group
@@ -34,7 +34,7 @@ class Group
 
   column :id, header: "Group Id", converter: :integer
   column :name, header: "Group Name", converter: :string
-  column :members, sub_reader: GroupMember
+  column :members, sub_reader: GroupMember, default: proc { DevKit::ConfigMap::Collection.new([], record_type: self) }
 end
 
 RSpec.describe DevKit::Csv::CsvReader do

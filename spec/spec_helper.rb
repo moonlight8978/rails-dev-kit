@@ -19,4 +19,5 @@ RSpec.configure do |config|
 
   config.warnings = true
   config.include RSpec::Matchers::FailMatchers
+  config.include ActiveSupport::Testing::TimeHelpers
 end

@@ -8,10 +8,12 @@ require 'dry-validation'
 require 'dry-logic'
 require 'dry-schema'
 require 'eth'
+require 'jwt'
 
 Dry::Validation.load_extensions(:predicates_as_macros)
 
 require "dev_kit/controllers"
+require "dev_kit/cryptographic"
 require "dev_kit/csv"
 require "dev_kit/enum"
 require "dev_kit/form"

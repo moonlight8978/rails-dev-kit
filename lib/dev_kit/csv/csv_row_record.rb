@@ -29,7 +29,7 @@ module DevKit
 
           if sub_reader
             self.attr_to_sub_reader[attr] = DevKit::Csv::CsvReader.new(sub_reader)
-            attribute attr, default: [], **args
+            attribute attr, default: proc { [] }, **args
           else
             self.attr_to_header[attr] = header
             self.header_to_attr[header] = attr

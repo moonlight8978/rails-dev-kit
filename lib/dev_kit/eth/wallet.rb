@@ -9,6 +9,8 @@ module DevKit
         { name: "salt", type: "bytes32" }
       ]
 
+      attr_reader :key, :address
+
       def initialize(priv: nil, pub: nil)
         @address = ::Eth::Address.new(pub) if pub.present?
 

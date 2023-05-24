@@ -33,6 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "dry-validation"
   spec.add_dependency "dry-schema"
   spec.add_dependency "dry-logic"
+  spec.add_dependency "jwt"
 
   spec.add_development_dependency "rspec-rails"
   spec.add_development_dependency "rspec-collection_matchers"
