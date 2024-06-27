@@ -7,8 +7,8 @@ require "csv"
 require 'dry-validation'
 require 'dry-logic'
 require 'dry-schema'
-require 'eth'
-require 'jwt'
+# require 'eth'
+# require 'jwt'
 
 Dry::Validation.load_extensions(:predicates_as_macros)
 

@@ -29,11 +29,11 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", ">= 7.0.4.2"
   spec.add_dependency "enumerize"
-  spec.add_dependency "eth"
   spec.add_dependency "dry-validation"
   spec.add_dependency "dry-schema"
   spec.add_dependency "dry-logic"
-  spec.add_dependency "jwt"
+  spec.add_development_dependency "eth"
+  spec.add_development_dependency "jwt"
 
   spec.add_development_dependency "rspec-rails"
   spec.add_development_dependency "rspec-collection_matchers"
